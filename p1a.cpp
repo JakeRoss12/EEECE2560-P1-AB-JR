@@ -68,5 +68,7 @@ int main() {
     codemaker_code.Randomize();
     codemaker_code.printCode();
     codemaker_code.Randomize();
+    codemaker_code.printCode();
+    codemaker_code.Randomize();
     codemaker_code.printCode();    
 }
