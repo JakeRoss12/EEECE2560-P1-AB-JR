@@ -8,8 +8,9 @@ using namespace std;
 // Code class
 class Code {
 public:
-    // Constructor
+    // Constructors
     Code(int n, int m);
+    Code(int n, int m, vector<int> v);
 
     // Randomize values in vector
     void Randomize();
@@ -31,10 +32,19 @@ private:
 
 // Code class: Constructor
 Code::Code(int n, int m) {
-    //set length to n
+    // Set length to n
     length = n;
-    //set range to m
+    // Set range to m
     range = m;
+    // Randomize the code
+    Randomize();
+}
+
+// Code class: Constructor with provided vector
+Code::Code(int n, int m, vector<int> v) {
+    length = n;
+    range = m;
+    code_obj = v;
 }
 
 // Code class: Randomize values in vector
@@ -97,22 +107,40 @@ void Code::printCode() const {
 int main() {
     int n;
     int m;
-    cout << "Please enter length and range" << endl;
-    cin >> n >> m;
+    cout << "Please enter the length of the secret code: ";
+    cin >> n;
+    cout << "Please enter the range of numbers: ";
+    cin >> m;
     srand(static_cast<unsigned>(time(0)));
 
+    // Create the secret code
     Code codemaker_code(n, m);
-    codemaker_code.Randomize();
+    cout << "Secret Code: ";
     codemaker_code.printCode();
 
-    Code guess_code(n, m);
-    guess_code.Randomize();
-    guess_code.printCode();
+    // Sample guess codes
+    Code guess1(n, m, {5, 0, 3, 2, 6});
+    cout << "Guess Code 1: ";
+    guess1.printCode();
 
-    int correctCount = codemaker_code.checkCorrect(guess_code);
-    int incorrectCount = codemaker_code.checkIncorrect(guess_code);
+    Code guess2(n, m, {2, 1, 2, 2, 2});
+    cout << "Guess Code 2: ";
+    guess2.printCode();
 
-    cout << "Number of correct digits in the correct location: " << correctCount << endl;
-    cout << "Number of correct digits in the incorrect location: " << incorrectCount << endl;
+    Code guess3(n, m, {1, 3, 3, 4, 5});
+    cout << "Guess Code 3: ";
+    guess3.printCode();
 
+    int correctCount1 = codemaker_code.checkCorrect(guess1);
+    int incorrectCount1 = codemaker_code.checkIncorrect(guess1);
+
+    int correctCount2 = codemaker_code.checkCorrect(guess2);
+    int incorrectCount2 = codemaker_code.checkIncorrect(guess2);
+
+    int correctCount3 = codemaker_code.checkCorrect(guess3);
+    int incorrectCount3 = codemaker_code.checkIncorrect(guess3);
+
+    cout << "Guess 1 - Correct: " << correctCount1 << " Incorrect: " << incorrectCount1 << endl;
+    cout << "Guess 2 - Correct: " << correctCount2 << " Incorrect: " << incorrectCount2 << endl;
+    cout << "Guess 3 - Correct: " << correctCount3 << " Incorrect: " << incorrectCount3 << endl;
 }
