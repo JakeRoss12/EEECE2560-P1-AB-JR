@@ -189,13 +189,3 @@ class Mastermind {
     int secret_length;
     int secret_range;
 };
-
-//Mastermind Class: Consrtuctors
-Mastermind::Mastermind(int x, int y) {
-    secret_length = x;
-    secret_range = y;
-}
-Mastermind::Mastermind() {
-    secret_length = 5;
-    secret_range = 10;
-}
