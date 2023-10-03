@@ -234,6 +234,18 @@ Response Mastermind::getResponse(const Code &guess) {
     return response;
 }
 
+// Masterming Class: check if solved
+bool Mastermind::isSolved(const Response &guess) {
+    Response correct;
+    correct.Set(5, 0);
+    if (correct == guess) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 int main () {
     cout << "No errors!" << endl;
 }
