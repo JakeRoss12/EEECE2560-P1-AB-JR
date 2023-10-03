@@ -172,8 +172,8 @@ class Mastermind {
     // Prints Secret Code
     void printCode();
 
-    // Take human guess
-    Code humanGuess();
+    // Get human guess
+    Code humanGuess(int n, int m);
 
     // Gets Response of guess
     Response getResponse(const Code &guess);
@@ -206,6 +206,27 @@ void Mastermind::printCode() {
     secret_code.printCode();
 }
 
+// Mastermind Class: Get human guess
+Code Mastermind::humanGuess(int n, int m) {
+    vector<int> guess;
+    int current_guess;
+    cout << "Please enter your guess one number at a time: " << endl;
+    for (int i = 0; i < n; i++) {
+        cin >> current_guess;
+        // make sure number is in range, get a new one if not
+        if ((current_guess >= m) || (current_guess < 0)) {
+            cout << "That number is out of range, please renter one in range";
+            i--;
+        }
+        else {
+            guess.push_back(current_guess);
+        }
+        cout << endl;
+    }
+    Code human_guess(n, m, guess);
+    return human_guess;
+}
+
 int main () {
-    cout << "Ig you need a main to keep from mystery error" << endl;
+    cout << "No errors!" << endl;
 }
