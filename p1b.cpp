@@ -227,6 +227,13 @@ Code Mastermind::humanGuess(int n, int m) {
     return human_guess;
 }
 
+// Mastermind Class: get response to guess
+Response Mastermind::getResponse(const Code &guess) {
+    Response response;
+    response.Set(secret_code.checkCorrect(guess), secret_code.checkIncorrect(guess));
+    return response;
+}
+
 int main () {
     cout << "No errors!" << endl;
 }
