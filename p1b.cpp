@@ -166,7 +166,7 @@ ostream & operator<<(ostream&out, Response&A) {
 class Mastermind {
     public:
     // Constructors
-    Mastermind(int x, int y);
+    Mastermind(int n, int m);
     Mastermind();
 
     // Prints Secret Code
@@ -189,3 +189,18 @@ class Mastermind {
     int secret_length;
     int secret_range;
 };
+
+// Mastermind Class: constructors
+// Currently giving errors I don't understand
+//Mastermind::Mastermind(int n, int m) {
+    //secret_length = n;
+    //secret_range = m;
+//}
+//Mastermind::Mastermind() {
+    //secret_length = 5;
+    //secret_range = 10;
+//}
+
+int main () {
+    cout << "Ig you need a main to keep from mystery error" << endl;
+}
