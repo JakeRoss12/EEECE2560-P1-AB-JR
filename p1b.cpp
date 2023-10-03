@@ -201,6 +201,11 @@ class Mastermind {
     //secret_range = 10;
 //}
 
+// Mastermind Class: print secret code
+void Mastermind::printCode() {
+    secret_code.printCode();
+}
+
 int main () {
     cout << "Ig you need a main to keep from mystery error" << endl;
 }
