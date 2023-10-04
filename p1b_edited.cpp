@@ -246,7 +246,6 @@ bool Mastermind::isSolved(const Response &guess) {
 }
 
 void Mastermind::playGame() {
-    cout << "Welcome to Mastermind game" << endl;
     cout << "I have generated a secret code of length " << secret_length << " and range " << secret_range << "." << endl;
 
     int attempts = 0;
@@ -258,7 +257,7 @@ void Mastermind::playGame() {
         Code guess = humanGuess(secret_length, secret_range);
 
         // Clear input buffer
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        //cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         // Get the response
         Response response = getResponse(guess);
@@ -287,8 +286,20 @@ int main () {
     // Set the random seed for code generation
     srand(time(0));
 
-    // Create a Mastermind game with a code length of 5 and a range of 10
-    Code secretcode(5, 10);
+    // Welcome user to game
+    cout << "Welcome to Mastermind game!" << endl;
+
+    // Get code length and range from user
+    int length;
+    int range;
+
+    cout << "Please input the length of the code you would like to break: ";
+    cin >> length;
+    cout << "Please input the range of the digits in the code you would like to break: ";
+    cin >> range;
+
+    // Create a Mastermind game with a code from user input
+    Code secretcode(length, range);
 
     cout << "Secret Code: ";
     secretcode.printCode();
