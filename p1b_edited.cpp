@@ -221,7 +221,6 @@ Code Mastermind::humanGuess(int n, int m) {
         else {
             guess.push_back(current_guess);
         }
-        cout << endl;
     }
     Code human_guess(n, m, guess);
     return human_guess;
