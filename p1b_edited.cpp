@@ -256,9 +256,6 @@ void Mastermind::playGame() {
         // Get the human guess
         Code guess = humanGuess(secret_length, secret_range);
 
-        // Clear input buffer
-        //cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
         // Get the response
         Response response = getResponse(guess);
 
