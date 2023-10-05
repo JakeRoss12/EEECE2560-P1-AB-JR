@@ -6,6 +6,7 @@
 #include <vector>
 #include <ctime>
 #include <algorithm>
+#include <limits>
 
 using namespace std;
 
@@ -213,9 +214,16 @@ Code Mastermind::humanGuess(int n, int m) {
     cout << "Please enter your guess one number at a time and press enter: " << endl;
     for (int i = 0; i < n; i++) {
         cin >> current_guess;
+        // check if user input triggers fail state
+        if (cin.fail()) {
+            cout << "That is not an integer, please renter a guess in range: " << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            i--;
+        }
         // make sure number is in range, get a new one if not
-        if ((current_guess >= m) || (current_guess < 0)) {
-            cout << "That number is out of range, please renter one in range" << endl;
+        else if ((current_guess >= m) || (current_guess < 0)) {
+            cout << "That number is out of range, please renter one in range: " << endl;
             i--;
         }
         else {
