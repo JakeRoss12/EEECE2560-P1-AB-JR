@@ -299,9 +299,38 @@ int main () {
     int range;
 
     cout << "Please input the length of the code you would like to break: ";
-    cin >> length;
+    for (int i = 0; i < 1; i++) {
+        cin >> length;
+        // check if input stream enters fail state from not getting an int
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Please input a length as an integer: ";
+            i--;
+        }
+        // check if length is greater than 0
+        else if (length <= 0) {
+            cout << "Please input a length greater than 0: ";
+            i--;
+        }
+    }
+    
     cout << "Please input the range of the digits in the code you would like to break: ";
-    cin >> range;
+    for (int i = 0; i < 1; i++) {
+        cin >> range;
+        // check if input stream enters fail state from not getting an int
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Please input a length as an integer: ";
+            i--;
+        }
+        // check if length is greater than 0
+        else if (range <= 0) {
+            cout << "Please input a length greater than 0: ";
+            i--;
+        }
+    }
 
     // Create a Mastermind game with a code from user input
     Code secretcode(length, range);
