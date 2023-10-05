@@ -301,7 +301,7 @@ int main () {
     cout << "Secret Code: ";
     secretcode.printCode();
 
-    Mastermind game(5, 10, secretcode);
+    Mastermind game(length, range, secretcode);
 
     // Play the game
     game.playGame();
