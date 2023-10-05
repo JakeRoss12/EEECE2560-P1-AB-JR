@@ -236,7 +236,7 @@ Response Mastermind::getResponse(const Code &guess) {
 // Mastermind Class: check if solved
 bool Mastermind::isSolved(const Response &guess) {
     Response correct;
-    correct.Set(5, 0);
+    correct.Set(secret_length, 0);
     if (correct == guess) {
         return true;
     }
