@@ -111,7 +111,7 @@ void Code::printCode() const {
 
 // Response Class
 class Response {
-public:
+    public:
     // Constructor
     Response();
 
@@ -126,7 +126,7 @@ public:
     // output
     friend ostream & operator<<(ostream&out, Response&A);
 
-private:
+    private:
     int num_correct;
     int num_incorrect;
 };
@@ -164,10 +164,10 @@ ostream & operator<<(ostream&out, Response&A) {
 
 // Mastermind Class
 class Mastermind {
-public:
+    public:
     // Constructors
-    Mastermind(int n, int m, Code secretCode);
-    Mastermind(Code secretCode);
+    Mastermind(int n, int m);
+    Mastermind();
 
     // Prints Secret Code
     void printCode();
@@ -184,7 +184,7 @@ public:
     // Initializes game
     void playGame();
 
-private:
+    private:
     Code secret_code;
     int secret_length;
     int secret_range;
@@ -192,14 +192,14 @@ private:
 
 // Mastermind Class: constructors
 // Currently giving errors I don't understand
-Mastermind::Mastermind(int n, int m, Code secretCode) : secret_code(secretCode) {
-    secret_length = n;
-    secret_range = m;
-}
-Mastermind::Mastermind(Code secretCode) : secret_code(secretCode) {
-    secret_length = 5;
-    secret_range = 10;
-}
+//Mastermind::Mastermind(int n, int m) {
+    //secret_length = n;
+    //secret_range = m;
+//}
+//Mastermind::Mastermind() {
+    //secret_length = 5;
+    //secret_range = 10;
+//}
 
 // Mastermind Class: print secret code
 void Mastermind::printCode() {
@@ -210,17 +210,18 @@ void Mastermind::printCode() {
 Code Mastermind::humanGuess(int n, int m) {
     vector<int> guess;
     int current_guess;
-    cout << "Please enter your guess one number at a time and press enter: " << endl;
+    cout << "Please enter your guess one number at a time: " << endl;
     for (int i = 0; i < n; i++) {
         cin >> current_guess;
         // make sure number is in range, get a new one if not
         if ((current_guess >= m) || (current_guess < 0)) {
-            cout << "That number is out of range, please renter one in range" << endl;
+            cout << "That number is out of range, please renter one in range";
             i--;
         }
         else {
             guess.push_back(current_guess);
         }
+        cout << endl;
     }
     Code human_guess(n, m, guess);
     return human_guess;
@@ -233,7 +234,7 @@ Response Mastermind::getResponse(const Code &guess) {
     return response;
 }
 
-// Mastermind Class: check if solved
+// Masterming Class: check if solved
 bool Mastermind::isSolved(const Response &guess) {
     Response correct;
     correct.Set(5, 0);
@@ -245,64 +246,6 @@ bool Mastermind::isSolved(const Response &guess) {
     }
 }
 
-void Mastermind::playGame() {
-    cout << "I have generated a secret code of length " << secret_length << " and range " << secret_range << "." << endl;
-
-    int attempts = 0;
-
-    while (attempts < 10) {  // You can adjust the maximum number of attempt
-        cout << "Attempt " << attempts + 1 << ":" << endl;
-
-        // Get the human guess
-        Code guess = humanGuess(secret_length, secret_range);
-
-        // Get the response
-        Response response = getResponse(guess);
-
-        // Print the response
-        cout << "Response: " << response << endl;
-
-        // Check if the code is solved
-        if (isSolved(response)) {
-            cout << "Congratulations! You've cracked the code!" << endl;
-            cout << "Codebreaker (you) won the game!" << endl;
-            break;
-        }
-
-        attempts++;
-    }
-
-    if (attempts >= 10) {
-        cout << "Sorry, you've reached the maximum number of attempts. The secret code was: ";
-        secret_code.printCode();
-        cout << "Codemaker (computer) won the game!" << endl;
-    }
-}
-
 int main () {
-    // Set the random seed for code generation
-    srand(time(0));
-
-    // Welcome user to game
-    cout << "Welcome to Mastermind game!" << endl;
-
-    // Get code length and range from user
-    int length;
-    int range;
-
-    cout << "Please input the length of the code you would like to break: ";
-    cin >> length;
-    cout << "Please input the range of the digits in the code you would like to break: ";
-    cin >> range;
-
-    // Create a Mastermind game with a code from user input
-    Code secretcode(length, range);
-
-    cout << "Secret Code: ";
-    secretcode.printCode();
-
-    Mastermind game(5, 10, secretcode);
-
-    // Play the game
-    game.playGame();
+    cout << "No errors!" << endl;
 }
